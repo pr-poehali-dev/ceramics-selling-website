@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
-  const ceramicProducts = [
+  const handmadeProducts = [
     {
       id: 1,
       name: "Терракотовая ваза",
@@ -18,21 +18,54 @@ const Index = () => {
       image: "/img/48b14e94-df37-41bc-b047-44b9a098508f.jpg",
       description:
         "Элегантная ваза ручной работы с натуральной терракотовой глазурью",
+      category: "handmade",
     },
     {
       id: 2,
+      name: "Керамическая скульптура",
+      price: "5 800 ₽",
+      image: "/img/967c3ba6-c85a-4cee-b137-694f85d65c7c.jpg",
+      description:
+        "Уникальная художественная керамика, созданная методом ручной лепки",
+      category: "handmade",
+    },
+    {
+      id: 3,
       name: "Набор керамических мисок",
       price: "2 800 ₽",
       image: "/img/dec1bc58-fe95-476f-9a7f-846ed76e07f4.jpg",
       description:
         "Коллекция мисок из натуральной глины с уникальной текстурой",
+      category: "handmade",
+    },
+  ];
+
+  const potteryProducts = [
+    {
+      id: 4,
+      name: "Гончарная ваза",
+      price: "2 200 ₽",
+      image: "/img/cfb8c3b6-1903-437a-acb4-5ca72530396e.jpg",
+      description:
+        "Классическая ваза, созданная на гончарном круге по традиционной технологии",
+      category: "pottery",
     },
     {
-      id: 3,
+      id: 5,
       name: "Посуда из терракоты",
       price: "4 200 ₽",
       image: "/img/d06ff076-e835-4779-b926-f8d495241e5d.jpg",
       description: "Набор тарелок с органичными формами и теплыми оттенками",
+      category: "pottery",
+    },
+    {
+      id: 6,
+      name: "Горшок на гончарном круге",
+      price: "1 800 ₽",
+      image: "/img/50b57498-6396-403a-afc2-14f771b91d56.jpg",
+      description:
+        "Традиционный керамический горшок, выточенный на гончарном круге",
+      category: "pottery",
     },
   ];
 
@@ -226,43 +259,124 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {ceramicProducts.map((product) => (
-              <Card
-                key={product.id}
-                className="overflow-hidden hover:shadow-lg transition-shadow duration-300 bg-background"
-              >
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-foreground">
-                    {product.name}
-                  </CardTitle>
-                  <CardDescription className="text-muted-foreground">
-                    {product.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-accent">
-                      {product.price}
-                    </span>
-                    <Button
-                      size="sm"
-                      className="bg-accent hover:bg-accent/90 text-accent-foreground"
-                    >
-                      <Icon name="ShoppingCart" className="h-4 w-4 mr-2" />В
-                      корзину
-                    </Button>
+          {/* Handmade Section */}
+          <div className="mb-16">
+            <div className="flex items-center justify-center mb-8">
+              <Badge className="bg-terracotta-100 text-terracotta-800 border-terracotta-200 text-lg px-4 py-2">
+                <Icon name="Palette" className="h-5 w-5 mr-2" />
+                Ручная работа
+              </Badge>
+            </div>
+            <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Уникальные произведения, созданные методом ручной лепки. Каждое
+              изделие неповторимо и несет в себе индивидуальность мастера.
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {handmadeProducts.map((product) => (
+                <Card
+                  key={product.id}
+                  className="overflow-hidden hover:shadow-lg transition-shadow duration-300 bg-background"
+                >
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <CardTitle className="text-foreground">
+                        {product.name}
+                      </CardTitle>
+                      <Badge
+                        variant="outline"
+                        className="border-terracotta-300 text-terracotta-700"
+                      >
+                        Ручная работа
+                      </Badge>
+                    </div>
+                    <CardDescription className="text-muted-foreground">
+                      {product.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center justify-between">
+                      <span className="text-2xl font-bold text-accent">
+                        {product.price}
+                      </span>
+                      <Button
+                        size="sm"
+                        className="bg-accent hover:bg-accent/90 text-accent-foreground"
+                      >
+                        <Icon name="ShoppingCart" className="h-4 w-4 mr-2" />В
+                        корзину
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Pottery Section */}
+          <div>
+            <div className="flex items-center justify-center mb-8">
+              <Badge className="bg-clay-100 text-clay-800 border-clay-200 text-lg px-4 py-2">
+                <Icon name="RotateCcw" className="h-5 w-5 mr-2" />
+                Гончарные изделия
+              </Badge>
+            </div>
+            <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Традиционная керамика, созданная на гончарном круге. Классические
+              формы и проверенные временем техники изготовления.
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {potteryProducts.map((product) => (
+                <Card
+                  key={product.id}
+                  className="overflow-hidden hover:shadow-lg transition-shadow duration-300 bg-background"
+                >
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <CardTitle className="text-foreground">
+                        {product.name}
+                      </CardTitle>
+                      <Badge
+                        variant="outline"
+                        className="border-clay-300 text-clay-700"
+                      >
+                        Гончарный круг
+                      </Badge>
+                    </div>
+                    <CardDescription className="text-muted-foreground">
+                      {product.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center justify-between">
+                      <span className="text-2xl font-bold text-accent">
+                        {product.price}
+                      </span>
+                      <Button
+                        size="sm"
+                        className="bg-accent hover:bg-accent/90 text-accent-foreground"
+                      >
+                        <Icon name="ShoppingCart" className="h-4 w-4 mr-2" />В
+                        корзину
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
 
           <div className="text-center mt-12">
